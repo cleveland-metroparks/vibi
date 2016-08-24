@@ -108,7 +108,7 @@ CREATE TABLE disturbance_severity (
 INSERT INTO disturbance_severity VALUES ('low'), ('medium low'), ('medium'), ('medium high'), ('high'), ('very high'); 
 
 CREATE TABLE module (
-  module_id int4 PRIMARY KEY
+  module_id text PRIMARY KEY
 );
 
 INSERT INTO module VALUES (1), (2), (3), (4), (5), (6), (7), (8), (9), (10);
@@ -300,7 +300,7 @@ CREATE TABLE plot (
 CREATE TABLE plot_module_herbaceous (
   fid text PRIMARY KEY,
   plot_no text references plot(plot_no) ON UPDATE CASCADE ON DELETE CASCADE,
-  module_id int4 references module(module_id),
+  module_id text references module(module_id),
   corner int4 references corner(corner),
   depth integer references depth(depth),
   species text references species(scientific_name),
@@ -312,7 +312,7 @@ CREATE TABLE plot_module_herbaceous (
 CREATE TABLE plot_module_herbaceous_info (
   fid text PRIMARY KEY,
   plot_no text references plot(plot_no) ON UPDATE CASCADE ON DELETE CASCADE,
-  module_id int4 references module(module_id),
+  module_id text references module(module_id),
   corner int4 references corner(corner),
   depth integer references depth(depth),
   info text,
@@ -323,7 +323,7 @@ CREATE TABLE fds1_species_misc_info (
   fid text PRIMARY KEY,
   species text references species(scientific_name),
   plot_no text references plot(plot_no) ON UPDATE CASCADE ON DELETE CASCADE,
-  module_id int4 references module(module_id),
+  module_id text references module(module_id),
   voucher_no text,
   comment text,
   browse_intensity text,
@@ -336,7 +336,7 @@ CREATE TABLE plot_module_woody_raw (
   fid text PRIMARY KEY,
   plot_no text references plot(plot_no) ON UPDATE CASCADE ON DELETE CASCADE,
   sub numeric,
-  module_id int4 references module(module_id),
+  module_id text references module(module_id),
   species text references species(scientific_name),
   dbh_class text references dbh_class(dbh_class),
   dbh_class_index int4,
@@ -348,7 +348,7 @@ CREATE TABLE fds2_species_misc_info (
   fid text PRIMARY KEY,
   species text references species(scientific_name),
   plot_no text references plot(plot_no) ON UPDATE CASCADE ON DELETE CASCADE,
-  module_id int4 references module(module_id),
+  module_id text references module(module_id),
   voucher_no text,
   comment text,
   browse_intensity text,
@@ -371,7 +371,7 @@ CREATE TABLE biomass_raw (
   fid text PRIMARY KEY,
   plot_no text references plot(plot_no) ON UPDATE CASCADE ON DELETE CASCADE,
   date_time timestamptz,
-  module_id int4 references module(module_id),
+  module_id text references module(module_id),
   corner int4 references corner(corner),
   sample_id int4,
   area_sampled numeric,
