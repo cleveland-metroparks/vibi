@@ -259,8 +259,8 @@ public class Fds1Service {
                 moreModulesAndCorners = false;
                 continue;
             }
-            modulesAndCorners.add(new ModuleAndCorner(extractInteger(module),
-                    extractInteger(corner), index, index + 1));
+            modulesAndCorners.add(new ModuleAndCorner(extractString(module),
+                    extractString(corner), index, index + 1));
             index += 2;
         }
         return modulesAndCorners;
